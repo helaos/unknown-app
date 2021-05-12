@@ -102,6 +102,7 @@ export default {
   height: 100%;
   display: flex;
   align-items: center;
+  text-align: center;
   background-color: #fafafa;
   background-image: url('./../assets/images/grunge_wall.png');
 }

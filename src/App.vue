@@ -21,7 +21,6 @@ body,
   padding: 0;
   height: 100%;
   font-size: 15px;
-  text-align: center;
   font-family: "Helvetica Neue", "Hiragino Sans GB", "WenQuanYi Micro Hei", "Microsoft Yahei", sans-serif;
 }
 </style>
