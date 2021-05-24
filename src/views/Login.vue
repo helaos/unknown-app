@@ -72,7 +72,7 @@ export default {
             // 将jwt存入vuex中
             this.$store.commit('SET_TOKEN', jwt)
             // 登录跳转
-            this.$router.push('/')
+            this.$router.push('/index')
           })
         } else {
           console.log('error submit!!');

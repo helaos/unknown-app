@@ -9,6 +9,20 @@
 export default {
   name: 'app',
   components: {
+  },
+  watch: {
+    /**
+     * 监控路由非登录进入，将路由信息添加至状态中
+     */
+    $route(to, from) {
+      if (to.path !== '/login') {
+        let obj = {
+          name: to.name,
+          title: to.meta.title
+        }
+        this.$store.commit('addTab', obj)
+      }
+    }
   }
 }
 </script>
@@ -22,5 +36,9 @@ body,
   height: 100%;
   font-size: 15px;
   font-family: "Helvetica Neue", "Hiragino Sans GB", "WenQuanYi Micro Hei", "Microsoft Yahei", sans-serif;
+}
+
+a {
+  text-decoration: none;
 }
 </style>

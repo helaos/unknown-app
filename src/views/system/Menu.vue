@@ -1,11 +1,12 @@
 <template>
-  <div>main</div>
+  <div>
+    路由管理
+  </div>
 </template>
 
 <script>
-
 export default {
-  name: 'Index',
+  name: 'Menu'
 }
 </script>
 
