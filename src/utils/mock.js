@@ -79,7 +79,7 @@ Mock.mock('/system/menu/nav', 'get', () => {
           id: 5,
           title: '路由管理',
           name: 'SystemMenu',
-          icon: 'el-icon-s-custom',
+          icon: 'el-icon-s-unfold',
           component: 'system/Menu',
           path: '/system/menus',
           children: []
