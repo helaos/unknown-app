@@ -35,10 +35,8 @@ export default ({
     },
     // 添加 Tabs
     addTab (state, tab) {
-
       // 判定是否有重复的 Tab
       let index = state.editableTabs.findIndex(e => e.name === tab.name)
-
       // 如果没有找到
       if (index === -1) {
         // 将 Tab 数据添加进数组

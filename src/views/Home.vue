@@ -23,7 +23,9 @@
       </el-header>
       <el-main>
         <tabs />
-        <router-view />
+        <div style="margin: 0 1rem">
+          <router-view />
+        </div>
       </el-main>
     </el-container>
   </el-container>
@@ -105,9 +107,9 @@ export default {
 .el-main {
   /* background-color: #e9eef3; */
   /* line-height: 160px; */
+  /* text-align: center; */
   color: #333;
-  text-align: center;
-  padding: 0.8rem;
+  padding: 0.7rem;
 }
 
 .el-dropdown-link {

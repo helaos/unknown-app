@@ -81,7 +81,7 @@ export default {
 <style scoped>
 /* 布局 */
 .user-center {
-  height: 100%;
+  height: 80%;
   display: flex;
   justify-content:space-evenly;
   align-items: center;
@@ -89,7 +89,7 @@ export default {
 
 /* 头像 */
 .avatar-uploader {
-  border: 1px dashed #946868;
+  border: 1px dashed #d9d9d9;
   border-radius: 50%;
   cursor: pointer;
   position: relative;
