@@ -1,6 +1,6 @@
-const Mock = require('mockjs');
+const Mock = require('mockjs')
 
-const Random = Mock.Random;
+const Random = Mock.Random
 
 let Result = {
   code: 200,
@@ -15,7 +15,7 @@ Mock.mock('/captcha', 'get', () => {
     captchaImg: Random.dataImage('100x40', 'p7n5w')
   }
 
-  return Result;
+  return Result
 })
 
 Mock.mock('/login', 'post', () => {
@@ -114,4 +114,84 @@ Mock.mock('/system/menu/nav', 'get', () => {
   }
 
   return Result
+})
+
+Mock.mock('/system/menuList', 'get', () => {
+  let menuList = [
+    {
+      id: 1,
+      name: '王小虎',
+      perms: '/user',
+      icon: 're-sd',
+      type: 1,
+      path: '/suerper',
+      component: '/sdasdw',
+      order: 1,
+      status: 1,
+    },
+    {
+      id: 2,
+      name: '王小虎',
+      perms: '/user',
+      icon: 're-sd',
+      type: 1,
+      path: '/suerper',
+      component: '/sdasdw',
+      order: 1,
+      status: 1,
+    },
+    {
+      id: 3,
+      name: '王小虎',
+      perms: '/user',
+      icon: 're-sd',
+      type: 1,
+      path: '/suerper',
+      component: '/sdasdw',
+      children: [
+        {
+          id: 4,
+          name: '王小虎',
+          perms: '/user',
+          icon: 're-sd',
+          type: 1,
+          path: '/suerper',
+          component: '/sdasdw',
+          order: 1,
+          status: 1,
+        },
+        {
+          id: 5,
+          name: '王小虎',
+          perms: '/user',
+          icon: 're-sd',
+          type: 1,
+          path: '/suerper',
+          component: '/sdasdw',
+          order: 1,
+          status: 1,
+        }
+      ],
+      order: 1,
+      status: 1,
+    }
+  ]
+
+  Result.data = {
+    menuList
+  }
+
+  return Result
+})
+
+Mock.mock('/system/menu', 'put', () => {
+  
+})
+
+Mock.mock('/system/menu', 'post', () => {
+
+})
+
+Mock.mock('/system/menu', 'get', () => {
+
 })
