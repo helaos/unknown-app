@@ -1,11 +1,15 @@
 <template>
   <el-container>
     <el-aside width="201px">
+      <div class="tilte">
+        <img class="logo-image" src="@/assets/images/logo.png" alt="">
+        <h2 class="logo-title">Unknown App</h2>
+      </div>
       <side-menu />
     </el-aside>
     <el-container>
       <el-header>
-        <strong>Unknown App 后台管理系统</strong>
+        <!-- <strong>Unknown App 后台管理系统</strong> -->
         <div class="header-avatar">
           <el-avatar :src="userInfo.avatar"></el-avatar>
           <el-dropdown>
@@ -93,7 +97,7 @@ export default {
   background-color: white;
   color: #333;
   text-align: center;
-  line-height: 60px;
+  line-height: 56px;
   box-shadow: 0 1px 9px rgba(70, 68, 68, 0.3);
   z-index: 1;
 }
@@ -102,6 +106,34 @@ export default {
   background-color: #d3dce6;
   color: #333;
   line-height: 200px;
+  overflow: hidden;
+}
+
+.tilte {
+  background-color: rgb(66, 66, 190);
+  color: #fff;
+  min-height: 60px;
+  line-height: 60px;
+  text-align: center;
+  transition: all .3s;
+}
+
+.logo-image {
+  margin: 0;
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+  border-radius: 50%;
+  padding-right: 5px;
+}
+
+.logo-title {
+  margin: 0;
+  color: #fff;
+  display: inline-block;
+  font-size: small;
+  vertical-align: middle;
+  padding-left: 5px;
 }
 
 .el-main {

@@ -4,7 +4,7 @@
       <div class="login-title">
         <h2>欢迎来到Unknown App管理系统</h2>
         <el-image :src="require('@/assets/images/CallMe.jpg')" style="width: 200px"></el-image>
-        <p>微信 scpcrow</p>
+        <p>微信 cifanse_fatehole</p>
         <p>有事扫二维码联系，谢谢！</p>
       </div>
     </el-col>
@@ -96,8 +96,6 @@ export default {
 </script>
 
 <style scoped>
-
-
 .el-row {
   height: 100%;
   display: flex;
