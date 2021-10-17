@@ -60,32 +60,31 @@
         label="描述"
         align="center"
         show-overflow-tooltip
-      >
-      </el-table-column>
+      ></el-table-column>
       <el-table-column prop="status" label="状态" align="center" width="80">
         <template slot-scope="scope">
-          <el-tag size="small" type="success" v-if="scope.row.status === 1"
-            >正常</el-tag
-          >
+          <el-tag size="small" type="success" v-if="scope.row.status === 1">正常</el-tag>
           <el-tag size="small" type="danger" v-else>禁用</el-tag>
         </template>
       </el-table-column>
       <el-table-column fixed="right" label="操作" align="center" width="250">
         <template slot-scope="scope">
           <el-button
-            type="primary"
+            type="warning"
             @click="permHandle(scope.row.id)"
             plain
             size="small"
-            >分配权限</el-button
           >
+            分配权限
+          </el-button>
           <el-button
             type="primary"
             @click="editHandle(scope.row.id)"
             plain
             size="small"
-            >编辑</el-button
           >
+            编辑
+          </el-button>
           <template>
             <el-popconfirm
               title="这是一段内容确定删除吗？"
@@ -103,8 +102,9 @@
                 type="danger"
                 plain
                 size="small"
-                >删除</el-button
               >
+                删除
+              </el-button>
             </el-popconfirm>
           </template>
         </template>

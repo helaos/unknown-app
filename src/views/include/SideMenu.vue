@@ -2,9 +2,9 @@
   <el-menu
     :default-active="this.$store.state.menus.editableTabsValue"
     class="el-menu-vertical-demo"
-    background-color="#545c64"
+    background-color="#5352ed"
     text-color="#fff"
-    active-text-color="#ffd04b"
+    active-text-color="#ff7f50"
   >
     <router-link class="home-link" to="/index">
       <el-menu-item index="Index" @click="selectMenu({ name: 'Index', title: '首页' })">
@@ -58,6 +58,10 @@ export default {
 <style scoped>
 .el-menu-vertical-demo {
   height: 100%;
+}
+
+.el-menu {
+  border-right: none;
 }
 
 .home-link {
