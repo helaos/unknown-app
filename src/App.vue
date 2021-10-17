@@ -34,7 +34,7 @@ body,
   margin: 0;
   padding: 0;
   height: 100%;
-  font-size: 15px;
+  font-size: 13px;
   font-family: "Helvetica Neue", "Hiragino Sans GB", "WenQuanYi Micro Hei", "Microsoft Yahei", sans-serif;
 }
 
