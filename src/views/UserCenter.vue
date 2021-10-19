@@ -1,124 +1,174 @@
 <template>
-  <div class="user-center">
-    <el-upload
-      class="avatar-uploader"
-      action="https://jsonplaceholder.typicode.com/posts/"
-      :show-file-list="false"
-      :on-success="handleAvatarSuccess"
-      :before-upload="beforeAvatarUpload"
-    >
-      <img v-if="userForm.imageUrl" :src="userForm.imageUrl" class="avatar" />
-      <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-    </el-upload>
-
-    <el-form class="user-info-form" :rules="rules" ref="userForm" :model="userForm" label-width="80px">
-      <el-form-item label="用户名" prop="username">
-        <el-input v-model="userForm.username" placeholder="用户名"></el-input>
-      </el-form-item>
-      <el-form-item label="旧密码" prop="password">
-        <el-input v-model="userForm.password" placeholder="旧密码"></el-input>
-      </el-form-item>
-      <el-form-item label="新密码" prop="password">
-        <el-input v-model="userForm.newPassowrd" placeholder="新密码"></el-input>
-      </el-form-item>
-      <el-form-item>
-        <el-button type="primary">确认修改</el-button>
-        <el-button>取消</el-button>
-      </el-form-item>
-    </el-form>
+  <div>
+    <el-row :gutter="20" style="margin-top: 10px">
+      <el-col :span="8">
+        <div class="grid-content bg-purple">
+          <el-card class="box-card">
+            <div slot="header" class="clearfix">
+              <span>个人中心</span>
+            </div>
+            <div class="name-role">
+              <span class="sender">Admin - {{ dataForm.nickName }}</span>
+            </div>
+            <div class="registe-info">
+              <span class="registe-info">
+                注册时间：
+                <li class="fa fa-clock-o"></li>
+                2020/4/10 9:40:33
+              </span>
+            </div>
+            <el-divider></el-divider>
+            <div class="personal-relation">
+              <div class="relation-item">
+                手机号:
+                <div style="float: right; padding-right: 20px">
+                  {{ dataForm.phone }}
+                </div>
+              </div>
+            </div>
+            <div class="personal-relation">
+              <div class="relation-item">
+                所属企业:
+                <div style="float: right; padding-right: 20px">杭州诚聚</div>
+              </div>
+            </div>
+            <div class="personal-relation">
+              <div class="relation-item">
+                首页链接:
+                <div style="float: right; padding-right: 20px">
+                  {{ dataForm.homeUrl }}
+                </div>
+              </div>
+            </div>
+          </el-card>
+        </div>
+      </el-col>
+      <el-col :span="16">
+        <div class="grid-content bg-purple">
+          <el-card class="box-card">
+            <div slot="header" class="clearfix">
+              <span>基本资料</span>
+            </div>
+            <div>
+              <el-form
+                label-width="80px"
+                v-model="dataFrom"
+                size="small"
+                label-position="right"
+              >
+                <el-form-item label="用户昵称" prop="nickName">
+                  <el-input
+                    auto-complete="off"
+                    v-model="dataForm.nickName"
+                  ></el-input>
+                </el-form-item>
+                <el-form-item label="手机号" prop="phone">
+                  <el-input
+                    auto-complete="off"
+                    v-model="dataForm.phone"
+                  ></el-input>
+                </el-form-item>
+                <el-form-item label="首页链接" prop="homeUrl">
+                  <el-input
+                    maxlength="18"
+                    v-model="dataForm.homeUrl"
+                  ></el-input>
+                </el-form-item>
+              </el-form>
+              <div slot="footer" class="dialog-footer">
+                <el-button size="mini" type="primary">提交</el-button>
+                <el-button size="mini" type="warning">关闭</el-button>
+              </div>
+            </div>
+          </el-card>
+        </div>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'UserCenter',
   data () {
     return {
-      userForm: {
-        username: '',
-        // 旧密码
-        password: '',
-        // 新密码
-        newPassowrd: '',
-        // 用户头像地址
-        imageUrl: '',
-      },
-      rules: {
-        username: [
-          { required: true, message: '请输入用户名', trigger: 'blur' }
-        ],
-        password: [
-          { required: true, message: '请输入用户密码', trigger: 'blur' }
-        ]
-      },
-    }
-  },
-  methods: {
-
-
-
-    /** 图片处理相关 */
-    handleAvatarSuccess (res, file) {
-      // 处理图片上传并返回URL
-      // this.imageUrl = URL.createObjectURL(file.raw);
-    },
-    beforeAvatarUpload (file) {
-      const isJPG = file.type === 'image/jpeg'
-      const isLt2M = file.size / 1024 / 1024 < 2
-
-      if (!isJPG) {
-        this.$message.error('上传头像图片只能是 JPG 格式！')
+      dataForm: {
+        nickName: '超级管理员',
+        phone: '173567777777',
+        homeUrl: 'http://www.baidu.com'
       }
-      if (!isLt2M) {
-        this.$message.error('上传头像图片大小不能超过 2MB！')
-      }
-      return isJPG && isLt2M
     }
   }
 }
 </script>
 
 <style scoped>
-/* 布局 */
-.user-center {
-  height: 80%;
-  display: flex;
-  justify-content:space-evenly;
-  align-items: center;
+.text {
+  font-size: 14px;
 }
 
-/* 头像 */
-.avatar-uploader {
-  border: 1px dashed #d9d9d9;
-  border-radius: 50%;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  width: 15rem;
-  height: 15rem;
-  box-shadow: 3px 12px 12px rgb(70 68 68 / 30%);
+.item {
+  margin-bottom: 18px;
 }
 
-.avatar-uploader:hover {
-  border-color: #409eff;
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: "";
+}
+.clearfix:after {
+  clear: both;
 }
 
-.avatar-uploader-icon {
-  font-size: 28px;
-  color: #8c939d;
-  width: 15rem;
-  height: 15rem;
-  line-height: 15rem;
+.box-card {
+  width: 100%;
+}
+.name-role {
+  font-size: 16px;
+  padding: 5px;
   text-align: center;
 }
-.avatar {
-  width: 15rem;
-  height: 15rem;
-  display: block;
+.sender {
+  text-align: center;
+}
+.registe-info {
+  text-align: center;
+  padding-top: 10px;
+}
+.personal-relation {
+  font-size: 16px;
+  padding: 0px 5px 15px;
+  margin-right: 1px;
+  width: 100%;
 }
 
-/* 信息 */
-.user-info-form {
-  width: 25rem;
+.relation-item {
+  padding: 12px;
+}
+.dialog-footer {
+  padding-top: 10px;
+  padding-left: 10%;
+}
+.el-row {
+  margin-bottom: 20px;
+}
+.el-col {
+  border-radius: 4px;
+}
+.bg-purple-dark {
+  background: #99a9bf;
+}
+.bg-purple {
+  background: #d3dce6;
+}
+.bg-purple-light {
+  background: #e5e9f2;
+}
+.grid-content {
+  border-radius: 4px;
+  min-height: 36px;
+}
+.row-bg {
+  padding: 10px 0;
+  background-color: #f9fafc;
 }
 </style>

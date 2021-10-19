@@ -61,7 +61,8 @@ export default {
 }
 
 .el-menu {
-  border-right: none;
+  width: 200px;
+  border-right-width: 0;
 }
 
 .home-link {

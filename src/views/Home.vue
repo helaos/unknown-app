@@ -1,6 +1,6 @@
 <template>
   <el-container>
-    <el-aside width="201px">
+    <el-aside width="null">
       <div class="tilte">
         <img class="logo-image" src="@/assets/images/logo.png" alt="">
         <h2 class="logo-title">Unknown App</h2>
@@ -27,7 +27,7 @@
       </el-header>
       <el-main>
         <tabs />
-        <div style="margin: 0 1rem">
+        <div class="context">
           <router-view />
         </div>
       </el-main>
@@ -154,6 +154,11 @@ export default {
 
 .el-aside {
   box-shadow: 0 1px 9px rgba(70, 68, 68, 0.3);
+}
+
+.context {
+  margin: 0 1rem; 
+  /* height:70% */
 }
 
 </style>
