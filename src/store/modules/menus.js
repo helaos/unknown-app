@@ -44,7 +44,8 @@ export default ({
         state.editableTabs.push({
           title: tab.title,
           name: tab.name,
-          close: true
+          // 标签页是否可删除
+          close: tab.close
         })
       }
       // 如果没有就是只是将激活 Tab的值进行修改

@@ -18,7 +18,8 @@ export default {
       if (to.path !== '/login') {
         let obj = {
           name: to.name,
-          title: to.meta.title
+          title: to.meta.title,
+          close: true
         }
         this.$store.commit('addTab', obj)
       }

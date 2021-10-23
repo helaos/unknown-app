@@ -49,6 +49,8 @@ export default {
 
   methods: {
     selectMenu(item) {
+      // 标签页可以被删除
+      item.close = true
       this.$store.commit('addTab', item)
     }
   }
