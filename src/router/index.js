@@ -93,7 +93,10 @@ router.beforeEach((to, from, next) => {
         }
       })
       // 添加路由
-      router.addRoutes(newRouter)
+      // router.addRoutes(newRouter)
+      for (let route of newRouter) {
+        router.addRoute(route)
+      }
     })
 
     store.commit('changeRouteStatus', true)

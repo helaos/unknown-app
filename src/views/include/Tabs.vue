@@ -1,10 +1,11 @@
 <template>
-  <el-tabs v-model="editableTabsValue" type="card" closable @tab-remove="closeTab" @tab-click="jumpTab">
+  <el-tabs v-model="editableTabsValue" type="card" @tab-remove="closeTab" @tab-click="jumpTab">
     <el-tab-pane
       :key="item.name"
       v-for="item in editableTabs"
       :label="item.title"
       :name="item.name"
+      :closable="item.close"
     >
     </el-tab-pane>
   </el-tabs>

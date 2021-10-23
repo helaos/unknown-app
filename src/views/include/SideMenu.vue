@@ -21,7 +21,7 @@
       </template>
 
       <router-link :to="item.path" v-for="item in menu.children" :key="item.id">
-        <el-menu-item :index="item.name" @click="selectMenu(item)">
+        <el-menu-item class="sub-li" :index="item.name" @click="selectMenu(item)">
           <template slot="title">
             <i :class="item.icon"></i>
             <span>{{ item.title }}</span>
@@ -67,5 +67,13 @@ export default {
 
 .home-link {
   text-decoration: none;
+}
+
+.sub-li {
+  background-color: rgb(66, 66, 190) !important;
+}
+
+.sub-li:hover {
+  color: #ff7f50 !important;
 }
 </style>

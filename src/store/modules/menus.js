@@ -15,7 +15,8 @@ export default ({
     editableTabsValue: 'Index',
     editableTabs: [{
       title: '首页',
-      name: 'Index'
+      name: 'Index',
+      close: false
     }]
   },
   mutations: {
@@ -43,6 +44,7 @@ export default ({
         state.editableTabs.push({
           title: tab.title,
           name: tab.name,
+          close: true
         })
       }
       // 如果没有就是只是将激活 Tab的值进行修改
@@ -56,7 +58,8 @@ export default ({
       state.editableTabsValue = 'Index'
       state.editableTabs = [{
         title: '首页',
-        name: 'Index'
+        name: 'Index',
+        close: false
       }]
     }
   },

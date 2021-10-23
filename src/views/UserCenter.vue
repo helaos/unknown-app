@@ -8,13 +8,13 @@
               <span>个人中心</span>
             </div>
             <div class="name-role">
-              <span class="sender">Admin - {{ dataForm.nickName }}</span>
+              <span class="sender">Admin - {{ userForm.nickname }}</span>
             </div>
             <div class="registe-info">
               <span class="registe-info">
                 注册时间：
                 <li class="fa fa-clock-o"></li>
-                2020/4/10 9:40:33
+                {{ baseInfo.createTime }}
               </span>
             </div>
             <el-divider></el-divider>
@@ -22,7 +22,7 @@
               <div class="relation-item">
                 手机号:
                 <div style="float: right; padding-right: 20px">
-                  {{ dataForm.phone }}
+                  {{ userForm.phone }}
                 </div>
               </div>
             </div>
@@ -36,7 +36,7 @@
               <div class="relation-item">
                 首页链接:
                 <div style="float: right; padding-right: 20px">
-                  {{ dataForm.homeUrl }}
+                  {{ userForm.imageUrl }}
                 </div>
               </div>
             </div>
@@ -52,26 +52,26 @@
             <div>
               <el-form
                 label-width="80px"
-                v-model="dataFrom"
+                v-model="userForm"
                 size="small"
                 label-position="right"
               >
                 <el-form-item label="用户昵称" prop="nickName">
                   <el-input
                     auto-complete="off"
-                    v-model="dataForm.nickName"
+                    v-model="userForm.nickname"
                   ></el-input>
                 </el-form-item>
                 <el-form-item label="手机号" prop="phone">
                   <el-input
                     auto-complete="off"
-                    v-model="dataForm.phone"
+                    v-model="userForm.phone"
                   ></el-input>
                 </el-form-item>
                 <el-form-item label="首页链接" prop="homeUrl">
                   <el-input
                     maxlength="18"
-                    v-model="dataForm.homeUrl"
+                    v-model="userForm.imageUrl"
                   ></el-input>
                 </el-form-item>
               </el-form>
@@ -88,15 +88,28 @@
 </template>
 
 <script>
+import { formatDate } from '@/utils/dateUtil';
 export default {
   data () {
     return {
-      dataForm: {
-        nickName: '超级管理员',
+      userForm: {
+        nickname: '超级管理员',
+        username: '',
+        password: '',
+        newPassword: '',
         phone: '173567777777',
-        homeUrl: 'http://www.baidu.com'
+        imageUrl: '',
+      },
+      baseInfo: {
+        age: 2,
+        address: '',
+        createTime: '12',
+        email: ''
       }
     }
+  },
+  created() {
+    this.baseInfo.createTime = formatDate();
   }
 }
 </script>
