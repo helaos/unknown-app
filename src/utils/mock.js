@@ -100,7 +100,7 @@ Mock.mock('/system/menu/nav', 'get', () => {
           name: 'SysDict',
           icon: 'el-icon-s-order',
           component: '',
-          path: '/sys/dicts',
+          path: '/system/dicts',
           children: []
         }
       ]

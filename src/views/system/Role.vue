@@ -116,10 +116,10 @@
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
       :current-page="current"
+      :page-size="size"
+      :total="total"
       :page-sizes="[10, 20, 50, 100]"
-      :page-size="100"
       layout="total, sizes, prev, pager, next, jumper"
-      :total="400"
     >
     </el-pagination>
 
@@ -175,17 +175,25 @@
         <el-tree
           :data="permTreeData"
           show-checkbox
+          ref="permTree"
+          :default-expand-all="true"
           node-key="id"
+          :check-strictly="true"
           :props="defaultProps"
         >
         </el-tree>
       </el-form>
+
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="permDialogVisible = false">取消</el-button>
+        <el-button type="primary" @click="submitPermFormHandle('permForm')">确定</el-button>
+      </span>
     </el-dialog>
   </div>
 </template>
 
 <script>
-import { getRoleList, addRole, updateRole, getRoleInfo, removeRole } from '@/api/system/role'
+import { getRoleList, addRole, updateRole, getRoleInfo, removeRole, userBindRole } from '@/api/system/role'
 import { getMenuList } from '@/api/system/menu'
 export default {
   name: 'Role',
@@ -202,7 +210,7 @@ export default {
         status: 1
       }, {
         id: 2,
-        name: '王小虎',
+        name: '管理员',
         code: 'sys:admin',
         remark: '上海市普陀区金沙江路 1518 弄',
         status: 0
@@ -234,9 +242,9 @@ export default {
   },
   created() {
     this.obtainRoleList()
-    // getMenuList.then(res => {
-    //   this.permTreeData = res.data.data.menuList
-    // })
+    getMenuList.then(res => {
+      this.permTreeData = res.data.data.menuList
+    })
   },
   methods: {
     toggleSelection (rows) {
@@ -346,6 +354,24 @@ export default {
     },
     permHandle (id) {
       this.permDialogVisible = true
+      getRoleInfo(id).then(res => {
+        this.$refs.permTree.setCheckedKeys(res.data.menuIds);
+        this.permForm = res.data.data
+      })
+      
+    },
+    submitPermFormHandle(formName) {
+      let menuIds = this.$refs.permTree.getCheckedKeys()
+      userBindRole(this.permForm.id, menuIds).then(res => {
+        this.$message({
+          showClose: true,
+          message: '恭喜你，操作成功！',
+          onClose: () => {
+            this.obtainRoleList()
+          }
+        });
+        this.permDialogVisible = false;
+      });
     }
   }
 }

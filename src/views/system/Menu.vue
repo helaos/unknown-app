@@ -30,9 +30,7 @@
       <el-table-column prop="type" label="类型" align="center" width="80">
         <template slot-scope="scope">
           <el-tag size="small" v-if="scope.row.type === 0">目录</el-tag>
-          <el-tag size="small" type="success" v-else-if="scope.row.type === 1"
-            >菜单</el-tag
-          >
+          <el-tag size="small" type="success" v-else-if="scope.row.type === 1">菜单</el-tag>
           <el-tag size="small" type="info" v-else>按钮</el-tag>
         </template>
       </el-table-column>
@@ -98,7 +96,7 @@
 
     <!-- 弹窗 -->
     <el-dialog
-      title="提示"
+      title="新增"
       :visible.sync="dialogVisible"
       width="38%"
       :before-close="handleClose"
@@ -236,11 +234,10 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           if (this.editForm.id) {
-            //TODO:马上写
             updateMenu(this.editForm).then(res => {
               this.$message({
                 showClose: true,
-                message: '恭喜你，操作成功！',
+                message: '编辑成功！',
                 onClose: () => {
                   this.getMenuTree()
                 }
@@ -248,9 +245,15 @@ export default {
               this.dialogVisible = false
             })
           } else {
-            //TODO:马上写
             addMenu(this.editForm).then(res => {
-
+              this.$message({
+                showClose: true,
+                message: '创建成功！',
+                onClose: () => {
+                  this.getMenuTree()
+                }
+              })
+              this.dialogVisible = false
             })
           }
         } else {
@@ -284,7 +287,7 @@ export default {
       removeMenu(id).then(res => {
         this.$message({
           showClose: true,
-          message: '恭喜你，操作成功！',
+          message: '删除成功！',
           onClose: () => {
             this.getMenuTree()
           }
@@ -297,7 +300,4 @@ export default {
 </script>
 
 <style scoped>
-.el-form-item {
-  margin-bottom: 1rem;
-}
 </style>

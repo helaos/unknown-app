@@ -45,3 +45,13 @@ export function removeRole (roleId) {
     method: 'delete'
   })
 }
+
+export function userBindRole (id, meunIds) {
+  return request({
+    url: `/system/role/perm/${id}`,
+    method: 'post',
+    data: {
+      meunIds
+    }
+  })
+}

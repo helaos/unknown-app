@@ -42,14 +42,18 @@ export default {
       }
       this.editableTabsValue = activeName;
       this.editableTabs = tabs.filter(tab => tab.name !== targetName);
+      // 删除当前 Tab 返回上一个
+      this.$router.push({ name : activeName });
     },
 
     /**
      * 点击 Tab 进行页面跳转
      */
     jumpTab(target) {
-      this.$router.push({ name: target.name})
+      this.$router.push({ name: target.name })
     }
+    
+    // TODO: 将路由加入 localStorage中进行储存（vuex页面F5刷新后会丢失路由）
   },
   computed: {
     editableTabsValue: {
